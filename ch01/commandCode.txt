@@ -1,0 +1,137 @@
+Python 3.6.1 (default, Jul 17 2017, 15:41:02) 
+[GCC 4.2.1 Compatible Apple LLVM 8.1.0 (clang-802.0.42)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import numpy
+>>> numpy.version.full-version
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: module 'numpy.version' has no attribute 'full'
+>>> numpy.version.full_version
+'1.13.1'
+>>> import numpy as np
+>>> a = np.array([0,1,2,3,4,5])
+>>> a
+array([0, 1, 2, 3, 4, 5])
+>>> a.ndim
+1
+>>> a.shape
+(6,)
+>>> b = a.reshape((3.2))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'float' object cannot be interpreted as an integer
+>>> b = a.reshape((3,2))
+>>> b
+array([[0, 1],
+       [2, 3],
+       [4, 5]])
+>>> b.ndim
+2
+>>> b.shape
+(3, 2)
+>>> a[0]
+0
+>>> a[1]
+1
+>>> b[1][0] = 77
+>>> b
+array([[ 0,  1],
+       [77,  3],
+       [ 4,  5]])
+>>> a
+array([ 0,  1, 77,  3,  4,  5])
+>>> c = a.reshape((3,2)).copy()
+>>> c
+array([[ 0,  1],
+       [77,  3],
+       [ 4,  5]])
+>>> c[0][0] = -99
+>>> c
+array([[-99,   1],
+       [ 77,   3],
+       [  4,   5]])
+>>> a
+array([ 0,  1, 77,  3,  4,  5])
+>>> 
+>>> d = np.array([1,2,3,4,5])
+>>> d * 2
+array([ 2,  4,  6,  8, 10])
+>>> d
+array([1, 2, 3, 4, 5])
+>>> d ** 2
+array([ 1,  4,  9, 16, 25])
+>>> [1,2,3,4,5] * 2
+[1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
+>>> [1,2,3,4,5] ** 2
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unsupported operand type(s) for ** or pow(): 'list' and 'int'
+>>> c[0][0]
+-99
+>>> a
+array([ 0,  1, 77,  3,  4,  5])
+>>> a[np.array([2,3,4])]
+array([77,  3,  4])
+>>> a>4
+array([False, False,  True, False, False,  True], dtype=bool)
+>>> a[a>4]
+array([77,  5])
+>>> a[a>4] = 4
+>>> a
+array([0, 1, 4, 3, 4, 4])
+>>> a.clip(0,4)
+array([0, 1, 4, 3, 4, 4])
+>>> a.clip(0,3)
+array([0, 1, 3, 3, 3, 3])
+>>> a.clip(0,4)
+array([0, 1, 4, 3, 4, 4])
+>>> a.clip(0,2)
+array([0, 1, 2, 2, 2, 2])
+>>> a.clip(0,4)
+array([0, 1, 4, 3, 4, 4])
+>>> a
+array([0, 1, 4, 3, 4, 4])
+>>> c
+array([[-99,   1],
+       [ 77,   3],
+       [  4,   5]])
+>>> c = np.array([1,2,np.NAN,3,4])
+>>> c
+array([  1.,   2.,  nan,   3.,   4.])
+>>> np.isnan(c)
+array([False, False,  True, False, False], dtype=bool)
+>>> np.isnan(a)
+array([False, False, False, False, False, False], dtype=bool)
+>>> c[~np.isnan(c)]
+array([ 1.,  2.,  3.,  4.])
+>>> c[np.isnan(c)]
+array([ nan])
+>>> np.mean(c[~np.isnan(c)]
+... )
+2.5
+>>> 
+
+Python 3.6.1 (default, Jul 17 2017, 15:41:02) 
+[GCC 4.2.1 Compatible Apple LLVM 8.1.0 (clang-802.0.42)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> a = np.array([1,2,3])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'np' is not defined
+>>> import numpy as np
+>>> a = np.array([1,2,3])
+>>> a.dtype
+dtype('int64')
+>>> a[0]
+1
+>>> np.array([1,"stringy
+  File "<stdin>", line 1
+    np.array([1,"stringy
+                       ^
+SyntaxError: EOL while scanning string literal
+>>> np.array([1,"stringy"])
+array(['1', 'stringy'],
+      dtype='<U21')
+>>> np.array([1,"stringy",set([1,2,3])])
+array([1, 'stringy', {1, 2, 3}], dtype=object)
+>>> 
